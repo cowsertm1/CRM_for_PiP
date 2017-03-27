@@ -9,26 +9,27 @@
 
 def printMainMenu():
     print()
-    print("1. Print to screen")
-    print("2. Search")
-    print("3. Add contact")
-    print("4. Delete contact")
-    print("5. Save")
-    print("6. Quit")
+    print("pr. Print Contacts")
+    print("s. Search Contacts")
+    print("a. Add Contact")
+    print("d. Delete Contact")
+    print("sv. Save Changes")
+    print("h. Help")
+    print("q. Quit Application")
     print()
 
 def printSearchMenu():
     print()
-    print("0. First Name")
-    print("1. Last Name")
-    print("2. Phone Number")
-    print("3. Email")
+    print("f. First Name")
+    print("l. Last Name")
+    print("pn. Phone Number")
+    print("e. Email")
     print()
 
 def printSearchCriteria(field):
     print()
-    print("What string in the field " + field + " do you want to search for?")
+    print("What " + field + " do you want to search for?")
 
 def printInvalidOption(command):
     print()
-    print("", command, " is not a valid option.  Please select again.")
+    print("",command,  "is not a valid option.  Please select again.")
