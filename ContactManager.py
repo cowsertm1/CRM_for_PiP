@@ -9,7 +9,6 @@
 import Person
 import List
 import Menus
-import os
 
 fname = "contacts.dat"
 try:
@@ -28,20 +27,17 @@ def readInContacts():
         peep = Person.Person(fields[0].strip(), fields[1].strip(), fields[2].strip(), fields[3].strip())
         contactList.addPerson(peep)
 
-
 def printContactsToFile():
     # Print the contacts to a file.  Will loop until the application finds a good file name
     while True:
-        print("File Name")
-        fn = input()
+        fn = fname
         try:
             file = open(fn, 'w')
             contactList.printToFile(file)
-            print("Contacts saved to " + fn)
+            print( "Contacts saved to " + fn)
             break
         except IOError:
             continue
-
 
 def addNewContact():
     # Adds a new contact to the contact manager. Does not check for errors
@@ -69,35 +65,35 @@ def handleFoundPerson(person, option):
 
 def checkSearchInput(selected, option):
     # Handles the input for searching.
-    if selected == "f":
+    if selected == "fn":
         Menus.printSearchCriteria("First Name")
-        searchStr = input()
-        peep = contactList.matchPersonByFirstName(searchStr)
+        search_str = input()
+        peep = contactList.matchPersonByFirstName(search_str)
         handleFoundPerson(peep, option)
-    elif selected == "l":
+    elif selected == "ln":
         Menus.printSearchCriteria("Last Name")
-        searchStr = input()
-        peep = contactList.matchPersonByLastName(searchStr)
+        search_str = input()
+        peep = contactList.matchPersonByLastName(search_str)
         handleFoundPerson(peep, option)
     elif selected == "pn":
         Menus.printSearchCriteria("Phone Number")
-        searchStr = input()
-        peep = contactList.matchPersonByPhoneNumber(searchStr)
+        search_str = input()
+        peep = contactList.matchPersonByPhoneNumber(search_str)
         handleFoundPerson(peep, option)
     elif selected == "e":
         Menus.printSearchCriteria("Email")
-        searchStr = input()
-        peep = contactList.matchPersonByEmail(searchStr)
+        search_str = input()
+        peep = contactList.matchPersonByEmail(search_str)
         handleFoundPerson(peep, option)
     else:
         print("That is not a valid selection")
 
-def searchForPerson(option):
+def search_for_person(option):
     # Handles the option to search for a person to print or delete
     Menus.printSearchMenu()
     while True:
         try:
-            selection = int(input())
+            selection = str(input())
             checkSearchInput(selection, option)
             break
         except ValueError:
@@ -110,11 +106,11 @@ def checkInput(selected):
     if selected == "pr":
         contactList.printToScreen()
     elif selected == "s":
-        searchForPerson("search")
+        search_for_person("search")
     elif selected == "a":
         addNewContact()
     elif selected == "d":
-        searchForPerson("delete")
+        search_for_person("delete")
     elif selected == "sv":
         printContactsToFile()
     elif selected == "h":

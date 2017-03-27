@@ -20,8 +20,8 @@ def printMainMenu():
 
 def printSearchMenu():
     print()
-    print("f. First Name")
-    print("l. Last Name")
+    print("fn. First Name")
+    print("ln. Last Name")
     print("pn. Phone Number")
     print("e. Email")
     print()
